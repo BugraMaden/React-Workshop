@@ -9,16 +9,14 @@ const ProductCart = ({product, onAddToCart}) =>{
   }
 
   return(
-    <Card style={{margin: '10px'}}>
+    <Card style={{margin: '25px 40px 25px 40px'}}>
         <img src={product.image} alt={product.name} style={{width: '100%'}}></img>
         <CardBody>
           <CardTitle>{product.name}</CardTitle>
           <CardText>{product.description}</CardText>
           <CardText>{product.price} ₺</CardText>
           <Button onClick={handleAddToCart} color='success'>Sepete Ekle</Button>
-
         </CardBody>
-
     </Card>
   );
 }

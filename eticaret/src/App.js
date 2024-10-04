@@ -10,6 +10,7 @@ const App = () =>{
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [cart, setCart] = useState([]);
 
+
   const handleAddToCart = (product) =>{
     setCart([...cart, product]);
   };
@@ -27,7 +28,7 @@ const App = () =>{
   return(
     <Router>
       <Container>
-          <Navbar color="light" expand="md">
+          <Navbar style={{backgroundColor:"#ebe8e8"}} className='mt-1' expand="md">
             <NavbarBrand tag={Link} to="/">E-Ticaret</NavbarBrand>
             <Nav className='mr-auto'navbar>
               <NavItem>
@@ -40,10 +41,10 @@ const App = () =>{
             path='/'
             element={
               <Row>
-                <Col sm="4">
-                  <CategoryList categories={categories} onSelectedCategory={setSelectedCategory}></CategoryList>
+                <Col>
+                  <CategoryList selectedCategory={selectedCategory} categories={categories} onSelectedCategory={setSelectedCategory}></CategoryList>
                 </Col>
-                <Col sm="8">
+                <Col sm="12">
                   <ProductList products={filteredProducts} 
                   onAddToCart={handleAddToCart}></ProductList>
                 </Col>
