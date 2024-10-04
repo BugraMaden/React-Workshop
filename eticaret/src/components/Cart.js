@@ -4,7 +4,7 @@ import {Button, ListGroup, ListGroupItem} from 'reactstrap';
 
 const Cart = ({cartItems, onRemoveFromCart,onClearCart}) => {
   const totalPrice = cartItems.reduce((total, item) => total + item.price,0);
-
+  
   const itemCount=[];
 
   cartItems.forEach(item => {
@@ -31,6 +31,7 @@ const Cart = ({cartItems, onRemoveFromCart,onClearCart}) => {
     <div>
     <h3 className='ms-2 mt-4 mb-4'>Sepet</h3>
       <ListGroup>
+        {totalPrice===0 &&<ListGroupItem color='warning' className='animateCart mt-5' style={{textAlign:"center"}}>Sepetinize hiçbir ürün eklemediniz</ListGroupItem>}
         {itemCount.map((item) =>(
           <ListGroupItem className='d-flex justify-content-between align-items-center' key={item.id}>
             <img src={`${item.image}`} width={"15%"} alt='bulunamadi'/> <div style={{color:"green",fontWeight:"bold",fontSize:"16px"}}>{item.price} ₺</div>
@@ -43,8 +44,12 @@ const Cart = ({cartItems, onRemoveFromCart,onClearCart}) => {
           </ListGroupItem>
         ))}
       </ListGroup>
+      {totalPrice!==0 &&
+      <>
       <h4 style={{color:"black"}} className='mt-5 ms-2 mb-4'>Toplam: {totalPrice}₺</h4>
       <Button className='ms-2' color='danger' onClick={()=>handleClearCart()}>Sepeti Boşalt</Button>
+      </>
+      }
     </div>
 
   );
